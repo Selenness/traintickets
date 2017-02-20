@@ -4,6 +4,38 @@
   <strong>Number:</strong>
   <%= @train.number %>
 </p>
+
+<p>
+  <strong>Вагоны:</strong>
+  <% if @train.cars.present? %>
+      <table border="1">
+        <thead>
+        <tr>
+          <th colspan="2">Вагоны</th>
+          <th colspan="2">Кол-во мест</th>
+        </tr>
+        <tr>
+          <th>Купе</th>
+          <th>Плацкарта</th>
+          <th>Верхних</th>
+          <th>Нижних</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @train.cars.where(car_type: 'Купейный').count %></td>
+          <td><%= @train.cars.where(car_type: 'Плацкартный').count %></td>
+          <td><%= @train.cars.inject(0){ |total_top, car| total_top += car.top_seats } %></td>
+          <td><%= @train.cars.inject(0){ |total_bottom, car| total_bottom += car.bottom_seats } %></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+  <% else %>
+    У поезда нет вагонов
+  <% end %>
+</p>
 <p>
   <strong>На станции</strong>
   <% if @train.current_station.present? %>
