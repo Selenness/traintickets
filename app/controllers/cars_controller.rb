@@ -10,8 +10,11 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    @car.save
+    if @car.save
     redirect_to cars_url
+    else
+      render :new
+    end
   end
 
   def edit
@@ -20,8 +23,11 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
-    @car.update(car_params)
+    if @car.update(car_params)
     redirect_to cars_url
+    else
+      render :edit
+    end
   end
 
   def destroy
