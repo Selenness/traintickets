@@ -1,0 +1,20 @@
+<p>
+<strong>Номер вагона:</strong>
+<%= @car.number %>
+</p>
+<p>
+<strong>Тип вагона:</strong>
+<%= @car.car_type %>
+</p>
+<p>
+<% case @car.car_type %>
+  <% when 'Купейный' %>
+      <%= render 'coupe_car' %>
+  <% when 'Плацкартный' %>
+    <%= render 'economy_car' %>
+  <% when 'СВ' %>
+      <%= render 's_v_car' %>
+  <% when 'Сидячий' %>
+      <%= render 'seated_car' %>
+<% end %>
+</p>

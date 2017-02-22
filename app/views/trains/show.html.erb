@@ -7,6 +7,15 @@
 
 <p>
   <strong>Вагоны:</strong>
+  <p>
+    <% sorted_cars = @train.order_type ? @train.cars : @train.cars.reverse %>
+    <ul><%  sorted_cars.each do |car| %>
+      <li><%= link_to car.number, car_path(car) %></li>
+          <% end %>
+    </ul>
+  </p>
+</p>
+  <p>
   <% if @train.cars.present? %>
       <table border="1">
         <thead>
@@ -28,8 +37,6 @@
           <td><%= @train.cars.inject(0){ |total_top, car| total_top += car.top_seats } %></td>
           <td><%= @train.cars.inject(0){ |total_bottom, car| total_bottom += car.bottom_seats } %></td>
         </tr>
-
-
         </tbody>
       </table>
   <% else %>

@@ -5,6 +5,11 @@
     <%= f.number_field :number %>
   </div>
 
+    <div class="field">
+      <%= f.radio_button :order_type, 'head', checked: true %><%= label_tag 'С головы' %>
+      <%= f.radio_button :order_type, 'tail', checked: false %><%= label_tag  'С хвоста'%>
+    </div>
+
   <div class="field">
   <%= f.label :current_station, "Текущая станция" %>
   <%= f.collection_select :current_station_id, RailwayStation.all, :id, :name %>
