@@ -6,8 +6,7 @@
   </div>
 
     <div class="field">
-      <%= f.radio_button :order_type, 'head', checked: true %><%= label_tag 'С головы' %>
-      <%= f.radio_button :order_type, 'tail', checked: false %><%= label_tag  'С хвоста'%>
+      <%= f.check_box :order_type %><%= label_tag 'С головы/С хвоста' %>
     </div>
 
   <div class="field">

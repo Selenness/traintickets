@@ -7,7 +7,7 @@
 
     <div class="field">
       <%= f.label :type, 'Тип вагона' %>
-      <%= f.select :car_type, ['Купейный', 'Плацкартный', 'СВ', 'Сидячий'] %>
+      <%= f.select :type, options_for_select([['Купейный', CoupeCar], ['Плацкартный', EconomyCar], ['Сидячий', SeatedCar], ['СВ', SVCar ]]) %>
     </div>
 
     <div class="field">

@@ -2,8 +2,7 @@ class Car < ApplicationRecord
   belongs_to :train
 
   validates :number, presence: true
-  validates :number, uniqueness: true
-
+  validates :number, uniqueness: { scope: :train_id }
 
   before_validation :set_number
 
@@ -18,6 +17,6 @@ class Car < ApplicationRecord
   private
 
   def set_number
-    self.number = self.train.cars.length + 1
+    self.number = self.train.cars.max + 1
   end
 end

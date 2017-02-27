@@ -7,4 +7,5 @@ class Train < ApplicationRecord
   def seats_count(car_type, seats_type)
     self.cars.where(car_type: car_type).select("sum(#{seats_type}) as total").first.total
   end
+
 end

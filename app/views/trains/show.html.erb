@@ -8,8 +8,7 @@
 <p>
   <strong>Вагоны:</strong>
   <p>
-    <% sorted_cars = @train.order_type ? @train.cars : @train.cars.reverse %>
-    <ul><%  sorted_cars.each do |car| %>
+    <ul><%  @sorted_cars.each do |car| %>
       <li><%= link_to car.number, car_path(car) %></li>
           <% end %>
     </ul>

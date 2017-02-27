@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170222110425) do
     t.integer  "number"
     t.integer  "side_top_seats"
     t.integer  "side_bottom_seats"
+    t.string   "type"
     t.integer  "seated_seats"
     t.index ["train_id"], name: "index_cars_on_train_id"
   end
@@ -66,7 +67,6 @@ ActiveRecord::Schema.define(version: 20170222110425) do
     t.boolean  "order_type"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
-    t.index [nil], name: "index_trains_on_railway_station_id"
   end
 
   create_table "users", force: :cascade do |t|
