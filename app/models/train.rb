@@ -4,12 +4,9 @@ class Train < ApplicationRecord
   has_many :tickets
   has_many :cars
 
-  def seats_count(car_type, seats_type)
-    self.cars.where(type: car_type).sum(seats_type)
+  def seats_count(seats_type, car_type = nil)
+    scp = self.cars
+    scp = scp.where(type: car_type) if car_type.present?
+    scp.sum(seats_type)
   end
-
-  def total_seats(seats_type)
-    self.cars.sum(seats_type)
-  end
-
 end

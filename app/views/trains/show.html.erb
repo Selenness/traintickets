@@ -33,8 +33,8 @@
         <tr>
           <td><%= @train.cars.where(type: CoupeCar).count %></td>
           <td><%= @train.cars.where(type: EconomyCar).count %></td>
-          <td><%= @train.total_seats(:top_seats) %></td>
-          <td><%= @train.total_seats(:bottom_seats) %></td>
+          <td><%= @train.seats_count(:top_seats) %></td>
+          <td><%= @train.seats_count(:bottom_seats) %></td>
         </tr>
         </tbody>
       </table>
