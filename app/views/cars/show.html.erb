@@ -4,10 +4,10 @@
 </p>
 <p>
 <strong>Тип вагона:</strong>
-<%= @car.car_type %>
+<%= @car.type %>
 </p>
 <p>
-<% case @car.car_type %>
+<% case @car.type %>
   <% when 'Купейный' %>
       <%= render 'coupe_car' %>
   <% when 'Плацкартный' %>

@@ -17,6 +17,8 @@ class Car < ApplicationRecord
   private
 
   def set_number
-    self.number = self.train.cars.max + 1
+    max_number = self.train.cars.maximum(:number)
+    max_number ||= 0
+    self.number = max_number + 1
   end
 end

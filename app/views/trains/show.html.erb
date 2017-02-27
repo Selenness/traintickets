@@ -31,10 +31,10 @@
         </thead>
         <tbody>
         <tr>
-          <td><%= @train.cars.where(car_type: 'Купейный').count %></td>
-          <td><%= @train.cars.where(car_type: 'Плацкартный').count %></td>
-          <td><%= @train.cars.inject(0){ |total_top, car| total_top += car.top_seats } %></td>
-          <td><%= @train.cars.inject(0){ |total_bottom, car| total_bottom += car.bottom_seats } %></td>
+          <td><%= @train.cars.where(type: CoupeCar).count %></td>
+          <td><%= @train.cars.where(type: EconomyCar).count %></td>
+          <td><%= @train.total_seats(:top_seats) %></td>
+          <td><%= @train.total_seats(:bottom_seats) %></td>
         </tr>
         </tbody>
       </table>
