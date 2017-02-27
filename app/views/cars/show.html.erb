@@ -7,14 +7,5 @@
 <%= @car.type %>
 </p>
 <p>
-<% case @car.type %>
-  <% when 'Купейный' %>
-      <%= render 'coupe_car' %>
-  <% when 'Плацкартный' %>
-    <%= render 'economy_car' %>
-  <% when 'СВ' %>
-      <%= render 's_v_car' %>
-  <% when 'Сидячий' %>
-      <%= render 'seated_car' %>
-<% end %>
+  <%= render @car.type.underscore  %>
 </p>
