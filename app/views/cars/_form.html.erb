@@ -1,20 +1,21 @@
-<%= form_for(@car) do |f| %>
+<%= form_for @car.becomes(Car) do |f| %>
     <%= render 'common/errors', resource: @car %>
     <div class="field">
-      <%= f.label :train %>
+      <%= f.label :train, 'Номер поезда'%>
       <%= f.collection_select :train_id, Train.all, :id, :number %>
     </div>
 
     <div class="field">
-      <%= f.label :car_type %>
-      <%= f.select :car_type, ['Купейный', 'Плацкартный'] %>
+      <%= f.label :type, 'Тип вагона' %>
+      <%= f.select :type, options_for_select([['Купейный', CoupeCar], ['Плацкартный', EconomyCar], ['Сидячий', SeatedCar], ['СВ', SVCar ]]) %>
     </div>
+
     <div class="field">
-      <%= f.label :top_seats %>
+      <%= f.label :top_seats, 'Верхние сидения'%>
       <%= f.text_field :top_seats %>
     </div>
     <div class="field">
-      <%= f.label :bottom_seats %>
+      <%= f.label :bottom_seats, 'Нижние сидения' %>
       <%= f.text_field :bottom_seats %>
     </div>
 

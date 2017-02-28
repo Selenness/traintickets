@@ -7,6 +7,14 @@
 
 <p>
   <strong>Вагоны:</strong>
+  <p>
+    <ul><%  @sorted_cars.each do |car| %>
+      <li><%= link_to car.number, car_path(car) %></li>
+          <% end %>
+    </ul>
+  </p>
+</p>
+  <p>
   <% if @train.cars.present? %>
       <table border="1">
         <thead>
@@ -23,13 +31,11 @@
         </thead>
         <tbody>
         <tr>
-          <td><%= @train.cars.where(car_type: 'Купейный').count %></td>
-          <td><%= @train.cars.where(car_type: 'Плацкартный').count %></td>
-          <td><%= @train.cars.inject(0){ |total_top, car| total_top += car.top_seats } %></td>
-          <td><%= @train.cars.inject(0){ |total_bottom, car| total_bottom += car.bottom_seats } %></td>
+          <td><%= @train.cars.where(type: CoupeCar).count %></td>
+          <td><%= @train.cars.where(type: EconomyCar).count %></td>
+          <td><%= @train.seats_count(:top_seats) %></td>
+          <td><%= @train.seats_count(:bottom_seats) %></td>
         </tr>
-
-
         </tbody>
       </table>
   <% else %>

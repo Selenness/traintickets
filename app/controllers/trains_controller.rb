@@ -10,6 +10,7 @@ class TrainsController < ApplicationController
   # GET /trains/1
   # GET /trains/1.json
   def show
+    @sorted_cars = @train.order_type ? @train.cars : @train.cars.reverse
   end
 
   # GET /trains/new
@@ -25,7 +26,6 @@ class TrainsController < ApplicationController
   # POST /trains.json
   def create
     @train = Train.new(train_params)
-
     respond_to do |format|
       if @train.save
         format.html { redirect_to @train, notice: 'Train was successfully created.' }
@@ -69,6 +69,6 @@ class TrainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def train_params
-      params.require(:train).permit(:number, :current_station_id, :route_id)
+      params.require(:train).permit(:number, :current_station_id, :route_id, :order_type)
     end
 end

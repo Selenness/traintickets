@@ -5,6 +5,10 @@
     <%= f.number_field :number %>
   </div>
 
+    <div class="field">
+      <%= f.check_box :order_type %><%= label_tag 'С головы/С хвоста' %>
+    </div>
+
   <div class="field">
   <%= f.label :current_station, "Текущая станция" %>
   <%= f.collection_select :current_station_id, RailwayStation.all, :id, :name %>
