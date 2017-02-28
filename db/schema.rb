@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227131547) do
+ActiveRecord::Schema.define(version: 20170228164305) do
 
   create_table "cars", force: :cascade do |t|
     t.integer  "top_seats"
@@ -33,15 +33,29 @@ ActiveRecord::Schema.define(version: 20170227131547) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "railway_station_id"
-    t.integer "route_id"
-    t.integer "serial_number"
+    t.integer  "railway_station_id"
+    t.integer  "route_id"
+    t.integer  "serial_number"
+    t.integer  "position"
+    t.datetime "arrival_time"
+    t.datetime "departure_time"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "station_id"
+    t.integer  "train_id"
+    t.time     "arrival_time"
+    t.time     "departure_time"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["station_id"], name: "index_schedules_on_station_id"
+    t.index ["train_id"], name: "index_schedules_on_train_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -72,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170227131547) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "passport"
   end
 
 end

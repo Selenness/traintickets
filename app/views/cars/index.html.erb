@@ -1,4 +1,4 @@
-<div><%= link_to 'Создать новый вагон', new_car_path %></div>
+<div><%= link_to 'Создать новый вагон', new_train_car_path %></div>
 <table>
   <thead>
   <tr>
@@ -14,10 +14,10 @@
     <% @cars.each do |car| %>
         <tr>
           <td><%= car.train.number %></td>
-          <td><%= car.car_type %></td>
+          <td><%= car.type %></td>
           <td><%= car.top_seats %></td>
           <td><%= car.bottom_seats %></td>
-          <td><%= link_to 'Редактировать', edit_car_path(car) %></td>
+          <td><%= link_to 'Редактировать', edit_train_car_path(car) %></td>
           <td><%= link_to 'Удалить', "/cars/#{car.id}", method: 'delete' %></td>
         </tr>
     <% end %>
