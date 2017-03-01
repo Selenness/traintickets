@@ -1,3 +1,5 @@
+
+<%= link_to (user_signed_in? ? "Билеты" : "Войти"), tickets_path %>
 <h1>Поиск билетов</h1>
 <div class="row">
   <%= form_tag perform_search_path do %>
