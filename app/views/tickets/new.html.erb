@@ -1,0 +1,8 @@
+<%= form_tag tickets_path do %>
+    <%= text_field_tag :name %>
+    <%= text_field_tag :passport %>
+    <%= hidden_field_tag :train_id, @train_id %>
+    <%= hidden_field_tag :first_station_id, @first_station_id %>
+    <%= hidden_field_tag :end_station_id, @end_station_id %>
+    <%= submit_tag "Купить!" %>
+<% end %>
