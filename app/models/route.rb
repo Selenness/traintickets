@@ -4,7 +4,6 @@ class Route < ActiveRecord::Base
   has_many :trains
 
   validates :name, presence: true
-  validate :station_count
 
   before_validation :set_name
 

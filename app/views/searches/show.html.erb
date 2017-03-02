@@ -1,57 +1,61 @@
 
-<%= link_to (user_signed_in? ? "Билеты" : "Войти"), tickets_path %>
+
 <h1>Поиск билетов</h1>
 <div class="row">
-  <%= form_tag perform_search_path do %>
-    <div>
-      <%= select_tag :first_station, options_from_collection_for_select(@stations, :id, :name, @first_station.present? ? @first_station.id : nil)%>
-    </div>
-    <div>
-      <%= select_tag :end_station, options_from_collection_for_select(@stations, :id, :name, @first_station.present? ? @end_station.id : nil)%>
-    </div>
-      <div>
-        <%= submit_tag "Выбрать" %>
-      </div>
-  <% end %>
+  <div class="col-lg-12">
+    <%= form_tag perform_search_path do %>
+        <div class="form-group">
+          <%= select_tag :first_station, options_from_collection_for_select(@stations, :id, :name, @first_station.present? ? @first_station.id : nil), class: 'form-control'%>
+        </div>
+        <div class="form-group">
+          <%= select_tag :end_station, options_from_collection_for_select(@stations, :id, :name, @first_station.present? ? @end_station.id : nil), class: 'form-control'%>
+        </div>
+        <div>
+          <%= submit_tag "Выбрать", class: "btn btn-default" %>
+        </div>
+    <% end %>
+  </div>
 </div>
 <% if @result.present? %>
   <div class="row">
-    <table>
-      <thead>
-      <tr>
-        <td>Маршрут</td>
-        <td>Поезда</td>
-      </tr>
-      </thead>
-      <tbody>
-      <% @result.each do |route| %>
+    <div class="col-lg-12">
+      <table class="table table-bordered">
+        <thead>
         <tr>
-          <td><%= route.name %></td>
-          <td>
-            <table>
-              <thead>
-              <tr>
-                <th>Поезд</th>
-                <th>Отправление</th>
-                <th>Прибытие</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <% route.trains.each do |train|%>
-                <tr>
-                  <td><%= train.number %></td>
-                  <td><%= train.schedules.find_by_station_id(@first_station.id)%></td>
-                  <td><%= train.schedules.find_by_station_id(@end_station.id)%></td>
-                  <td><%= link_to "Купить", new_ticket_path(train_id: train.id, first_station_id: @first_station.id, end_station_id: @end_station.id) %></td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-            </td>
+          <td>Маршрут</td>
+          <td>Поезда</td>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <% @result.each do |route| %>
+            <tr>
+              <td><%= route.name %></td>
+              <td>
+                <table>
+                  <thead>
+                  <tr>
+                    <th>Поезд</th>
+                    <th>Отправление</th>
+                    <th>Прибытие</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% route.trains.each do |train|%>
+                      <tr>
+                        <td><%= train.number %></td>
+                        <td><%= train.schedules.find_by_station_id(@first_station.id)%></td>
+                        <td><%= train.schedules.find_by_station_id(@end_station.id)%></td>
+                        <td><%= link_to "Купить", new_ticket_path(train_id: train.id, first_station_id: @first_station.id, end_station_id: @end_station.id), class: 'btn btn-default' %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 <% end %>
