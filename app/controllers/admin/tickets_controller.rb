@@ -1,4 +1,4 @@
-class Admin::TicketsController < BaseController
+class Admin::TicketsController < Admin::BaseController
   def index
     @tickets = Ticket.all
     render 'application/tickets/index'
