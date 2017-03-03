@@ -16,4 +16,8 @@ u = User.create(
 st1 = RailwayStation.create(name: 'Chelyabinsk')
 st2 = RailwayStation.create(name: 'Moskva')
 
+# route1 = Route.create(name: 'Chelyabinsk-Moskva')
 
+# train = Train.create()
+
+# coupe_car = Car.create(number: 123, route_id: )
