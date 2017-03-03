@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
+ # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301153650) do
+ActiveRecord::Schema.define(version: 20170303081130) do
 
   create_table "cars", force: :cascade do |t|
     t.integer  "top_seats"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170301153650) do
     t.integer  "side_bottom_seats"
     t.string   "type"
     t.integer  "seated_seats"
+    t.index ["id", "type"], name: "index_cars_on_id_and_type"
     t.index ["train_id"], name: "index_cars_on_train_id"
   end
 
