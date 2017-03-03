@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong><%= t('activerecord.attributes.train.number') %></strong>
   <%= @train.number %>
 </p>
 
 <p>
-  <%= link_to "Добавить вагон", new_train_car_path(@train) %>
+  <%= link_to t('actions.create_car'), new_admin_train_car_path(@train) %>
 </p>
 
 <p>
-  <strong>Вагоны:</strong>
+  <strong><%= t('activerecord.models.car') %></strong>
   <p>
     <ul><%  @sorted_cars.each do |car| %>
-      <li><%= link_to "Вагон №#{car.number}", car_path(car) %></li>
+      <li><%= link_to "#{t('activerecord.attributes.car.number')} - #{car.number}", admin_car_path(car) %></li>
           <% end %>
     </ul>
   </p>
@@ -23,7 +23,7 @@
       <table border="1">
         <thead>
         <tr>
-          <th colspan="2">Вагоны</th>
+          <th colspan="2"><%= t('activerecord.models.car') %></th>
           <th colspan="2">Кол-во мест</th>
         </tr>
         <tr>
@@ -55,7 +55,7 @@
   <% end %>
 </p>
 <p>
-  <strong>Маршрут</strong>
+  <strong><%= t('activerecord.attributes.train.route') %></strong>
   <% if @train.route.present? %>
       <%= @train.route.name %>
   <% else %>
@@ -63,5 +63,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<%= link_to t('common.refferences.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('common.refferences.back'), admin_trains_path %>

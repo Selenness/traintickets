@@ -7,7 +7,7 @@
 <%= @car.type %>
 </p>
 <p>
-  <%= render @car.type.underscore  %>
+  <%= render @car.type.underscore %>
 </p>
 
-<%= link_to "Назад", @car.train %>
+<%= link_to "Назад", admin_train_path(@car.train) %>
