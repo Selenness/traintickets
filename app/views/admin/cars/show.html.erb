@@ -1,0 +1,13 @@
+<p>
+<strong>Номер вагона:</strong>
+<%= @car.number %>
+</p>
+<p>
+<strong>Тип вагона:</strong>
+<%= @car.type %>
+</p>
+<p>
+  <%= render @car.type.underscore %>
+</p>
+
+<%= link_to "Назад", admin_train_path(@car.train) %>

@@ -1,0 +1,33 @@
+<%= form_for [:admin, @train, @car.becomes(Car)] do |f| %>
+    <%= render 'common/errors', resource: @car %>
+    <div class="field">
+      <%= f.label :train, 'Номер поезда'%>
+      <%= f.collection_select :train_id, Train.all, :id, :number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :type, 'Тип вагона' %>
+      <%= f.select :type, options_for_select([['Купейный', CoupeCar], ['Плацкартный', EconomyCar], ['Сидячий', SeatedCar], ['СВ', SVCar ]]) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :top_seats, 'Верхние сидения'%>
+      <%= f.text_field :top_seats %>
+    </div>
+    <div class="field">
+      <%= f.label :bottom_seats, 'Нижние сидения' %>
+      <%= f.text_field :bottom_seats %>
+    </div>
+    <div class="field">
+      <%= f.label :side_top_seats, 'Верхние боковые сидения'%>
+      <%= f.text_field :side_top_seats %>
+    <div class="field">
+      <%= f.label :side_bottom_seats, 'Нижние боковые сидения'%>
+      <%= f.text_field :side_bottom_seats %>
+
+
+    <div class="actions">
+      <%= f.submit 'Создать' %>
+    </div>
+<% end %>
+<%= link_to 'Назад', admin_train_cars_path %>

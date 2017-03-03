@@ -1,0 +1,6 @@
+<h1><%= t('name_form.edit_train') %></h1>
+
+<%= render 'form', train: @train %>
+
+<%= link_to t('common.refferences.show'), admin_train_path(@train) %> |
+<%= link_to t('common.refferences.back'), admin_trains_path %>

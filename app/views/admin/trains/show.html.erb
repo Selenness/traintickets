@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('activerecord.attributes.train.number') %></strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <%= link_to t('actions.create_car'), new_admin_train_car_path(@train) %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.models.car') %></strong>
+  <p>
+    <ul><%  @sorted_cars.each do |car| %>
+      <li><%= link_to "#{t('activerecord.attributes.car.number')} - #{car.number}", admin_car_path(car) %></li>
+          <% end %>
+    </ul>
+  </p>
+</p>
+  <p>
+  <% if @train.cars.present? %>
+      <table border="1">
+        <thead>
+        <tr>
+          <th colspan="2"><%= t('activerecord.models.car') %></th>
+          <th colspan="2">Кол-во мест</th>
+        </tr>
+        <tr>
+          <th>Купе</th>
+          <th>Плацкарта</th>
+          <th>Верхних</th>
+          <th>Нижних</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @train.cars.where(type: CoupeCar).count %></td>
+          <td><%= @train.cars.where(type: EconomyCar).count %></td>
+          <td><%= @train.seats_count(:top_seats) %></td>
+          <td><%= @train.seats_count(:bottom_seats) %></td>
+        </tr>
+        </tbody>
+      </table>
+  <% else %>
+    У поезда нет вагонов
+  <% end %>
+</p>
+<p>
+  <strong>На станции</strong>
+  <% if @train.current_station.present? %>
+      <%= @train.current_station.name %>
+  <% else %>
+     Не указано
+  <% end %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.train.route') %></strong>
+  <% if @train.route.present? %>
+      <%= @train.route.name %>
+  <% else %>
+      Маршрут не назначен
+  <% end %>
+</p>
+
+<%= link_to t('common.refferences.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('common.refferences.back'), admin_trains_path %>

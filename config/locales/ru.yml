@@ -1,0 +1,49 @@
+ru:
+  common:
+    errors: Ошибки!
+    refferences:
+      back: Назад
+      show: Показать
+      edit: Редактировать
+      delete: Удалить
+      new: Создать новый
+  activerecord:
+    errors:
+      messages:
+        blank: Аттрибут не должен быть пустым!
+        taken: Аттрибут не уникален!
+    models:
+      train: Поезд
+      railway_station: Станция
+      route: Маршрут
+      ticket: Билет
+      car: Вагон
+    attributes:
+      train:
+        current_station: Текущая станция
+        number: Номер
+        route: Маршрут
+      ticket:
+        user_name: ФИО
+        passport: Паспорт
+      railway_station:
+        name: Название станции
+      car:
+        number: Номер
+        top_seats: Верхние сидения
+        bottom_seats: Нижние сидения
+        side_top_seats: Боковые верхние сидения
+        side_bottom_seats: Бокавые нижние сидения
+        seated_seats: Сидячие сидения
+  actions:
+    create_car:  Создать вагон
+    add_car: Добавить вагон
+  name_form:
+    edit_train: Редактирование вагона
+    errors:
+      massenger:
+       blank: Не может быть пустым
+  admin:
+    trains:
+      form:
+        submit: '%{action} станцию'
