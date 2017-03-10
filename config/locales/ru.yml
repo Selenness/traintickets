@@ -46,7 +46,7 @@ ru:
   admin:
     trains:
       form:
-        submit: '%{action} станцию'
+        submit: '%{action}'
   mailers:
     tickets:
       welcom: Привет,

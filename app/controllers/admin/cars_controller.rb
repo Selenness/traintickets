@@ -15,7 +15,8 @@ class Admin::CarsController < Admin::BaseController
   def create
     @car = @train.cars.new(car_params)
     if @car.save
-    redirect_to @train
+    redirect_to admin_train_path(@train)
+    else
       render :new
     end
   end
