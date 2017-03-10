@@ -1,5 +1,5 @@
 <h1>Добавить маршрут</h1>
-<%= form_for(@route) do |f| %>
+<%= form_for [:admin, @route] do |f| %>
     <%= render 'common/errors', resource: @route %>
     <div class="field">
       <%= f.label :name %>
