@@ -1,5 +1,5 @@
 <h1>Изменить маршрут</h1>
-<%= form_for(@route) do |f| %>
+<%= form_for [:admin, @route] do |f| %>
     <%= render 'common/errors', resource: @route %>
     <div class="field">
       <%= f.label :name %>
@@ -16,5 +16,5 @@
 <% end %>
 
 
-<%= link_to 'Показать', @route %> |
-<%= link_to 'Назад', admin_route_path %>
+<%= link_to 'Показать', admin_route_path(@route) %> |
+<%= link_to 'Назад', admin_routes_path %>

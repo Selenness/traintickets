@@ -48,8 +48,17 @@
         <a class="navbar-brand" href="#">Traintickets</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to (user_signed_in? ? "Билеты" : "Войти"), tickets_path %></li>
-            <li><%= link_to "Выход", destroy_user_session_path, method: :delete  %></li>
+            <% if user_signed_in? && current_user.admin? %>
+                <li><%= link_to "Поезда", admin_trains_path  %></li>
+                <li><%= link_to "Маршруты", admin_routes_path  %></li>
+                <li><%= link_to "Станции", admin_railway_stations_path  %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li><%= link_to "Билеты", tickets_path %></li>
+              <li><%= link_to "Выход", destroy_user_session_path, method: :delete  %></li>
+            <% else %>
+                <li><%= link_to "Войти", new_user_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
