@@ -39,7 +39,7 @@ ru:
     create_car:  Создать вагон
     add_car: Добавить вагон
   name_form:
-    edit_train: Редактирование вагона
+    edit_train: Редактирование
     errors:
       massenger:
        blank: Не может быть пустым

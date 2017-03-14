@@ -1,9 +1,8 @@
-<%= form_for [:admin, train] do |f| %>
-  <%= render 'common/errors', resource: @train %>
-  <div class="field">
-    <%= f.label :number %>
-    <%= f.number_field :number %>
-  </div>
+<%= form_for [:admin, train], html: { style: "display: #{hidden ? 'none' : 'block' }" } do |f| %>
+  <%= render 'common/errors', resource: train %>
+    <div class="field">
+      <%= f.number_field :number %>
+    </div>
 
     <div class="field">
       <%= f.check_box :order_type %><%= label_tag 'С головы/С хвоста' %>
@@ -20,6 +19,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>
+    <%= f.submit t('.submit', action: train.new_record? ? 'Создать' : 'Изменить') %>
   </div>
 <% end %>
