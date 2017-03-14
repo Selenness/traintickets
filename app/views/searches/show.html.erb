@@ -1,16 +1,18 @@
-<head>
-  <%= javascript_include_tag "search" %>
-</head>
-<body>
+<% content_for :head do %>
+  <%= javascript_include_tag 'search' %>
+<% end %>
+
 <h1>Поиск билетов</h1>
 <div class="row">
   <div class="col-lg-12">
     <%= form_tag perform_search_path do %>
-        <div class="form-group" id="first_station">
+        <div class="form-group">
           <%= select_tag :first_station, options_from_collection_for_select(@stations, :id, :name, @first_station.present? ? @first_station.id : nil), class: 'form-control'%>
+          <span class="label label-danger" style="display: none" id="first_alert">Совпадает с конечной станцией</span>
         </div>
-        <div class="form-group" id="end_station">
+        <div class="form-group">
           <%= select_tag :end_station, options_from_collection_for_select(@stations, :id, :name, @end_station.present? ? @end_station.id : nil), class: 'form-control'%>
+          <span class="label label-danger" style="display: none" id="second_alert">Совпадает с начальной станцией</span>
         </div>
         <div>
           <%= submit_tag "Выбрать", class: "btn btn-default" %>
@@ -61,4 +63,3 @@
     </div>
   </div>
 <% end %>
-</body>

@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+//= require bootstrap.js.coffee
+//= require cable
+//= require railway_station
+//= require routes
+//= require cars
+//= require trains
+// require_tree .

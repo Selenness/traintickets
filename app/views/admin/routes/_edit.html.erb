@@ -1,6 +1,6 @@
-<h1>Изменить маршрут</h1>
-<%= form_for [:admin, @route] do |f| %>
-    <%= render 'common/errors', resource: @route %>
+
+<%= form_for [:admin, route], html: {style: "display: #{hidden ? 'none' : 'block'}"} do |f| %>
+    <%= render 'common/errors', resource: route %>
     <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -14,7 +14,3 @@
       <%= f.submit 'Создать' %>
     </div>
 <% end %>
-
-
-<%= link_to 'Показать', admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
